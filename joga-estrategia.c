@@ -11,31 +11,22 @@ int main(){
 	}
 
 	for(i = 0; i < r; i++){
-		int maior_ponto = 0;
-		int jogador = 0;
 		int ponto;
 
 		for(k = 0; k < j; k++){
 			scanf("%d", &ponto);
-			if(ponto > maior_ponto){
-				maior_ponto = pontuacao[k];
-				jogador = k;
-			}
-			else if(ponto == maior_ponto && (k + 1) == j){
-				jogador = k;
-			}
+			pontuacao[k] += ponto;
 		}
-
-		pontuacao[jogador]++;
-		printf("Melhor jogador da rodada %d eh %d com %d pontos\n", i, jogador, pontuacao[jogador]);
 	}
 
-	int maior_pontuacao, melhor_jogador;
-	maior_pontuacao = melhor_jogador = 0;
+	int maior_pontuacao = 0;
+	int melhor_jogador = 0;
 
 	for(i = 0; i < j; i++){
 		if(pontuacao[i] > maior_pontuacao){
+			melhor_jogador = i;
 			maior_pontuacao = pontuacao[i];
+		}else if(pontuacao[i] == maior_pontuacao){
 			melhor_jogador = i;
 		}
 	}
